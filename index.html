@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoCash Converter | Instant Cryptocurrency to Fiat Exchange</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6e3aff;
+            --secondary: #2f1553;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        .crypto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-exchange-alt text-2xl"></i>
+                <span class="text-xl font-bold">CryptoCash</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-gray-200">Home</a>
+                <a href="#convert" class="hover:text-gray-200">Convert</a>
+                <a href="#rates" class="hover:text-gray-200">Rates</a>
+                <a href="#about" class="hover:text-gray-200">About</a>
+                <a href="#contact" class="hover:text-gray-200">Contact</a>
+            </div>
+            <button class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Convert Crypto to Cash Instantly</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Get competitive exchange rates for Bitcoin, Ethereum, and other cryptocurrencies to USD with same-day bank transfers.</p>
+            <a href="#convert" class="bg-white text-purple-800 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 inline-block">Start Converting</a>
+        </div>
+    </section>
+
+    <!-- Conversion Form -->
+    <section id="convert" class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="gradient-bg text-white py-4 px-6">
+                    <h2 class="text-2xl font-bold">Cryptocurrency Converter</h2>
+                    <p>Enter your transaction details below</p>
+                </div>
+                <div class="p-6">
+                    <form id="conversionForm">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">You Send</label>
+                                <div class="flex">
+                                    <select class="bg-gray-100 text-gray-700 border-0 rounded-l-lg p-3 focus:ring-2 focus:ring-purple-500">
+                                        <option value="BTC">BTC</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="LTC">LTC</option>
+                                        <option value="XRP">XRP</option>
+                                        <option value="USDT">USDT</option>
+                                    </select>
+                                    <input type="number" class="flex-grow border-2 border-l-0 border-gray-200 rounded-r-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">You Receive (USD)</label>
+                                <div class="flex">
+                                    <div class="bg-gray-100 text-gray-700 border-2 border-r-0 border-gray-200 rounded-l-lg p-3 px-4 flex items-center">
+                                        USD
+                                    </div>
+                                    <input type="number" class="flex-grow border-2 border-gray-200 rounded-r-lg p-3 bg-gray-50" placeholder="0.00" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2 font-medium">Recipient Details</label>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" class="border-2 border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Full Name">
+                                <input type="text" class="border-2 border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Bank Account Number">
+                                <select class="border-2 border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option>Select Bank</option>
+                                    <option>Chase</option>
+                                    <option>Bank of America</option>
+                                    <option>Wells Fargo</option>
+                                    <option>Citibank</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-gray-700 mb-2 font-medium">Your Crypto Wallet Address</label>
+                            <input type="text" class="w-full border-2 border-gray-200 rounded-lg p-3 focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your cryptocurrency wallet address">
+                        </div>
+
+                        <div class="flex items-center mb-6">
+                            <input type="checkbox" id="terms" class="mr-2 w-5 h-5">
+                            <label for="terms" class="text-gray-700">I agree to the <a href="#" class="text-purple-600 hover:underline">terms of service</a> and <a href="#" class="text-purple-600 hover:underline">privacy policy</a></label>
+                        </div>
+
+                        <button type="submit" class="gradient-bg text-white w-full py-3 rounded-lg font-bold hover:opacity-90 transition duration-300">Convert Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exchange Rates -->
+    <section id="rates" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Current Exchange Rates</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We offer competitive rates with no hidden fees. Rates update every minute based on market conditions.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bitcoin Card -->
+                <div class="crypto-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/40x40/2f1553/FFFFFF?text=BTC" alt="Bitcoin logo showing orange cryptocurrency symbol on purple background" class="mr-3">
+                            <h3 class="text-xl font-bold text-gray-800">Bitcoin</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">1 BTC = <span class="font-bold text-green-600">$42,837.20</span></p>
+                        <p class="text-sm text-gray-500">Updated 2 minutes ago</p>
+                    </div>
+                </div>
+                
+                <!-- Ethereum Card -->
+                <div class="crypto-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/40x40/2f1553/FFFFFF?text=ETH" alt="Ethereum logo showing blue cryptocurrency symbol on purple background" class="mr-3">
+                            <h3 class="text-xl font-bold text-gray-800">Ethereum</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">1 ETH = <span class="font-bold text-green-600">$2,315.50</span></p>
+                        <p class="text-sm text-gray-500">Updated 2 minutes ago</p>
+                    </div>
+                </div>
+                
+                <!-- Litecoin Card -->
+                <div class="crypto-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/40x40/2f1553/FFFFFF?text=LTC" alt="Litecoin logo showing silver cryptocurrency symbol on purple background" class="mr-3">
+                            <h3 class="text-xl font-bold text-gray-800">Litecoin</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">1 LTC = <span class="font-bold text-green-600">$72.84</span></p>
+                        <p class="text-sm text-gray-500">Updated 2 minutes ago</p>
+                    </div>
+                </div>
+                
+                <!-- Ripple Card -->
+                <div class="crypto-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/40x40/2f1553/FFFFFF?text=XRP" alt="Ripple logo showing blue cryptocurrency symbol on purple background" class="mr-3">
+                            <h3 class="text-xl font-bold text-gray-800">Ripple</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">1 XRP = <span class="font-bold text-green-600">$0.572</span></p>
+                        <p class="text-sm text-gray-500">Updated 2 minutes ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">How It Works</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Convert your cryptocurrency to cash in just 3 simple steps</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-800 text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Enter Transaction Details</h3>
+                    <p class="text-gray-600">Select your cryptocurrency, amount, and provide your bank details for USD deposit.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-800 text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Send Your Crypto</h3>
+                    <p class="text-gray-600">Transfer your cryptocurrency to the wallet address we provide after you confirm the transaction.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-800 text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Receive Your Cash</h3>
+                    <p class="text-gray-600">Your USD will be deposited to your bank account within 1 business day after confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Features -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Bank-Level Security</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Your transactions and personal information are protected with multiple security layers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">SSL Encryption</h3>
+                    <p class="text-gray-600">All data is encrypted end-to-end using 256-bit SSL encryption to prevent unauthorized access.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">2FA Authentication</h3>
+                    <p class="text-gray-600">Optional two-factor authentication via SMS or authenticator apps for account security.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="text-purple-600 text-3xl mb-4">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Cold Storage</h3>
+                    <p class="text-gray-600">The majority of cryptocurrency reserves are kept in offline cold storage for maximum security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What Our Users Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Trusted by thousands of cryptocurrency holders worldwide</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/2f1553/FFFFFF?text=JS" alt="Portrait of John S. with short brown hair and professional attire" class="rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-gray-800">John S.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Converted my Bitcoin to USD with no issues. Funds arrived in my account the same day. Will definitely use again!"</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/2f1553/FFFFFF?text=MA" alt="Portrait of Maria A. with long black hair and a friendly smile" class="rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-gray-800">Maria A.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Great rates compared to other services. The transaction was smooth and customer support was helpful when I had questions."</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/50x50/2f1553/FFFFFF?text=DP" alt="Portrait of David P. with glasses and a beard in a casual setting" class="rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-gray-800">David P.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"As someone who trades crypto regularly, I appreciate the transparency and speed of this service. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 gradient-bg text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Convert Your Crypto?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of satisfied customers who trust us for fast, secure cryptocurrency conversions.</p>
+            <a href="#convert" class="bg-white text-purple-800 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 inline-block">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CryptoCash</h3>
+                    <p class="text-gray-400">The fastest, most secure way to convert cryptocurrency to fiat currency with bank transfers.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#convert" class="text-gray-400 hover:text-white">Convert</a></li>
+                        <li><a href="#rates" class="text-gray-400 hover:text-white">Exchange Rates</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> support@cryptocash.com</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2"></i> +1 (555) 123-4567</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> 123 Crypto St, Virtual City</li>
+                    </ul>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-purple-300"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 CryptoCash Converter. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Conversion Modal -->
+    <div id="conversionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full mx-4">
+            <div class="text-center mb-4">
+                <i class="fas fa-check-circle text-green-500 text-5xl mb-3"></i>
+                <h3 class="text-2xl font-bold text-gray-800">Conversion Successful!</h3>
+                <p class="text-gray-600 mt-2">Your transaction has been processed.</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">You sent:</span>
+                    <span class="font-bold">0.05 BTC</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">You received:</span>
+                    <span class="font-bold">$2,141.86 USD</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-600">Transaction ID:</span>
+                    <span class="font-mono text-sm">TX987654321</span>
+                </div>
+            </div>
+            <button onclick="closeModal()" class="gradient-bg text-white w-full py-3 rounded-lg font-bold hover:opacity-90 transition duration-300">Done</button>
+        </div>
+    </div>
+
+    <script>
+        // Simple form submission handler
+        document.getElementById('conversionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showModal();
+        });
+
+        function showModal() {
+            document.getElementById('conversionModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('conversionModal').classList.add('hidden');
+        }
+
+        // Live exchange rate simulation
+        function simulateLiveRates() {
+            const cryptoInputs = document.querySelectorAll('input[type="number"]');
+            const cryptoSelect = document.querySelector('select');
+            
+            cryptoSelect.addEventListener('change', updateRate);
+            cryptoInputs[0].addEventListener('input', updateOutput);
+            
+            function updateRate() {
+                const rates = {
+                    'BTC': 42837.20,
+                    'ETH': 2315.50,
+                    'LTC': 72.84,
+                    'XRP': 0.572,
+                    'USDT': 1.00
+                };
+                const selectedCrypto = cryptoSelect.value;
+                const rate = rates[selectedCrypto];
+                
+                cryptoInputs[1].value = (cryptoInputs[0].value * rate).toFixed(2);
+            }
+            
+            function updateOutput() {
+                updateRate();
+            }
+        }
+        
+        simulateLiveRates();
+    </script>
+</body>
+</html>
